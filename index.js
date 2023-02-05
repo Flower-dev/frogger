@@ -13,7 +13,7 @@ let timerId;
 let outcomeTimerId;
 let currentTime = 20;
 
-function moveFrog(e) {
+const moveFrog = (e) => {
     squares[currentIndex].classList.remove('frog')
 
     switch(e.key) {
@@ -34,7 +34,7 @@ function moveFrog(e) {
 }
 document.addEventListener('keyup', moveFrog)
 
-function autoMoveElements() {
+const autoMoveElements = () => {
     currentTime--
     timeLeftDisplay.textContent = currentTime
     logsLeft.forEach(logLeft => moveLogLeft(logLeft))
@@ -44,7 +44,7 @@ function autoMoveElements() {
 }
 
 
-function moveLogLeft(logLeft) {
+const moveLogLeft = (logLeft) => {
     switch(true) {
         case logLeft.classList.contains('l1') :
             logLeft.classList.remove('l1')
@@ -69,7 +69,7 @@ function moveLogLeft(logLeft) {
     }
 }
 
-function moveLogRight(logRight) {
+const moveLogRight = (logRight) => {
     switch(true) {
         case logRight.classList.contains('l1') :
             logRight.classList.remove('l1')
@@ -111,7 +111,7 @@ function moveCarLeft(carLeft) {
     }
 }
 
-function moveCarRight(carRight) {
+const moveCarRight = (carRight) => {
     switch(true) {
         case carRight.classList.contains('c1') :
             carRight.classList.remove('c1')
@@ -129,3 +129,20 @@ function moveCarRight(carRight) {
 }
 
 setInterval(autoMoveElements, 1000)
+
+const checkOutComes = () => {
+    lose()
+    win()
+}
+
+const lose = () => {
+    console.log('Lose')
+}
+
+const win = () => {
+    console.log('Win')
+}
+
+startPauseButton.addEventListener('click', () => {
+    console.log('click')
+})
