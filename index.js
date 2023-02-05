@@ -32,7 +32,6 @@ const moveFrog = (e) => {
     }
     squares[currentIndex].classList.add('frog')
 }
-document.addEventListener('keyup', moveFrog)
 
 const autoMoveElements = () => {
     currentTime--
@@ -128,21 +127,46 @@ const moveCarRight = (carRight) => {
     }
 }
 
-setInterval(autoMoveElements, 1000)
-
 const checkOutComes = () => {
     lose()
     win()
 }
 
 const lose = () => {
-    console.log('Lose')
+    if(
+        squares[currentIndex].classList.contains('c1')
+        || squares[currentIndex].classList.contains('l4')
+        || squares[currentIndex].classList.contains('l5')
+        || currentTime <= 0
+    ) {
+        resultDisplay.textContent = 'You lose!'
+        clearInterval(timerId)
+        clearInterval(outcomeTimerId)
+        squares[currentIndex].classList.remove('frog')
+        document.removeEventListener('keyup', moveFrog)
+    }
 }
 
 const win = () => {
-    console.log('Win')
+    if(squares[currentIndex].classList.contains('ending-block')) {
+        resultDisplay.textContent = 'You win!'
+        clearInterval(timerId)
+        clearInterval(outcomeTimerId)
+        document.removeEventListener('keyup', moveFrog)
+    }
 }
 
 startPauseButton.addEventListener('click', () => {
-    console.log('click')
+    if(timerId) {
+        clearInterval(timerId)
+        clearInterval(outcomeTimerId)
+        timerId = null
+        outcomeTimerId = null
+        document.removeEventListener('keyup', moveFrog)
+    } else {
+        timerId = setInterval(autoMoveElements, 1000)
+        outcomeTimerId = setInterval(checkOutComes, 50)
+        document.addEventListener('keyup', moveFrog)
+    }
 })
+
