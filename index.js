@@ -35,10 +35,12 @@ function moveFrog(e) {
 document.addEventListener('keyup', moveFrog)
 
 function autoMoveElements() {
+    currentTime--
+    timeLeftDisplay.textContent = currentTime
     logsLeft.forEach(logLeft => moveLogLeft(logLeft))
     logsRight.forEach(logRight => moveLogRight(logRight))
     carsLeft.forEach(carLeft => moveCarLeft(carLeft))
-    carsRight.forEach(carRight => moveCarLeft(carRight))
+    carsRight.forEach(carRight => moveCarRight(carRight))
 }
 
 
