@@ -1,3 +1,11 @@
+html {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 .grid {
     border: 1px solid black;
     height: 180px;
@@ -18,14 +26,19 @@
 .starting-block {
     background-color: blue;
 }
+.l1, .l2, .l3 {
+    background-color: brown;
+}
 
-.log-left, 
-.log-right {
+.l4, .l5 {
     background-color: lightblue;
 }
 
-.car-left, 
-.car-right {
+.c1 {
+    background-color: black;
+}
+
+.c2, .c3 {
     background-color: lightgrey;
 }
 
